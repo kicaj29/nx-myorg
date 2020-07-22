@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-myorg/data": ["libs/data/src/index.ts"]
+      "@nx-myorg/data": ["libs/data/src/index.ts"],
+      "@nx-myorg/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

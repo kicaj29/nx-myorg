@@ -89,6 +89,6 @@ nx run-many --target=build --projects="todos,api"
 ```npm run affected:apps```
 ```npm run affected:libs```
 
-### Test affected project
+### Test affected project (unit tests)
 ```nx affected:test```
 ```nx affected:test --only-failed```

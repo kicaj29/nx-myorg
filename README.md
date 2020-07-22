@@ -74,5 +74,10 @@ If you're using VS Code it may be necessary at this point to restart the TS serv
 * Create a library ```nx g @nrwl/angular:lib ui```
 * Add a component to the library ```nx g component todos --project=ui --export```
 
+### Dependency graph
+```npm run dep-graph```
+
+![dep graph](images/dep-graph.png)
+
 ### Building Multiple Projects
 nx run-many --target=build --projects="todos,api"

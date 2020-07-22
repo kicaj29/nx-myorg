@@ -62,6 +62,8 @@ This operation upgraded libs from version 9 to version 10.
 
 ### Run e2e tests 
 ```nx e2e todos-e2e --watch```   
+>NOTE: From some reason this command did not run api service and it has to be run manually before starting e2e tests!
+
 
 ### Create library 
 ```nx g @nrwl/workspace:lib data```   

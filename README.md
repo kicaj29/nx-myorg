@@ -1,98 +1,76 @@
-# NxMyorg
+# nx
+nx examples
+based on https://nx.dev/angular/tutorial/01-create-application
 
-This project was generated using [Nx](https://nx.dev).
+## Problem 1
+> :warning: because from some reason installer was not able download cypress I downloaded it via Chrome and set env. variable to point the downloaded zip file.
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+```
+URL: https://download.cypress.io/desktop/4.10.0?platform=win32&arch=x64
+Error: Corrupted download
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+Expected downloaded file to have checksum: 942175a19889a164b9715278afaa46d1e65b25f7ba5e808b286d24154175aefa22dfcef6f3a18577866d5b61c172cd33318b4c6848c0479f976241e33cada116
+Computed checksum: 1ed51978b6d354f8c7397b3239221e51bb79326e2340c3d097693d1f8d5edfb383877c64341fcc6e9a7e2cf1f79b3dd5a04ab0bcea34b2e07ca56b6934406f6f
 
-## Quick Start & Documentation
+Expected downloaded file to have size: 187922715
+Computed size: 185555310
+```
 
-[Nx Documentation](https://nx.dev/angular)
+To solve the above problem I did
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+```
+set CYPRESS_INSTALL_BINARY=C:\Users\jkowalski\Downloads\cypress.zip
+echo %CYPRESS_INSTALL_BINARY%
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+```
+More about it can be found [here](https://docs.cypress.io/guides/getting-started/installing-cypress.html#Install-binary).
 
-## Adding capabilities to your workspace
+After this I was able to create new workspace but second error appeared during workspace creation but it seems that it has no impact on the application.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```
+'.' is not recognized as an internal or external command,
+operable program or batch file.
+(node:15356) UnhandledPromiseRejectionWarning: Error: Command failed: ./node_modules/.bin/nx g @nrwl/nx-cloud:init --no-analytics
+    at checkExecSyncError (child_process.js:616:11)
+    at Object.execSync (child_process.js:652:15)
+    at createApp (C:\Users\jkowalski\AppData\Roaming\npm-cache\_npx\15356\node_modules\create-nx-workspace\bin\create-nx-workspace.js:371:25)
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Problem 2
 
-Below are our core plugins:
+Next problem that I had to solve was issue with creating nest project:
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+```
+D:\GitHub\kicaj29\nx\myorg> nx generate @nrwl/nest:app api --frontendProject=todos
+Cannot read property 'types' of undefined
+```
 
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
+I had to run ```npm run update``` to upgrade to newer version and it fixed the problem.   
+NOTE: command update is defined in package.json ```ng update @nrwl/workspace```
+This operation upgraded libs from version 9 to version 10.
 
-## Generate an application
+## Selected commands
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+### Create workspace
+```npx create-nx-workspace@latest```  
 
-> You can use any of the plugins above to generate applications as well.
+### Install nest 
+```npm install --save-dev @nrwl/nest```   
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+### Add nest project and link it with frontend project 
+```nx g @nrwl/nest:app api --frontendProject=todos```   
 
-## Generate a library
+### Run e2e tests 
+```nx e2e todos-e2e --watch```   
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+### Create library 
+```nx g @nrwl/workspace:lib data```   
+If you're using VS Code it may be necessary at this point to restart the TS server so that the new @myorg/data package is recognized. This may need to be done every time a new workspace library is added.   
 
-> You can also use any of the plugins above to generate libraries as well.
+### Create a library of Angular components.
 
-Libraries are sharable across libraries and applications. They can be imported from `@nx-myorg/mylib`.
+* Create a library ```nx g @nrwl/angular:lib ui```
+* Add a component to the library ```nx g component todos --project=ui --export```
 
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+### Building Multiple Projects
+nx run-many --target=build --projects="todos,api"

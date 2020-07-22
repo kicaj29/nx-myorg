@@ -8,7 +8,7 @@ import { Todo } from '@nx-myorg/data'
 })
 export class TodosComponent implements OnInit {
 
-  @Input() todos: Todo[];
+  @Input() public todos: Todo[];
 
   constructor() { }
 

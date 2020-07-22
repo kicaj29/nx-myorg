@@ -81,3 +81,14 @@ If you're using VS Code it may be necessary at this point to restart the TS serv
 
 ### Building Multiple Projects
 nx run-many --target=build --projects="todos,api"
+
+### Lint with dependencies
+```nx lint todos --with-deps```
+
+### Detect affected projects
+```npm run affected:apps```
+```npm run affected:libs```
+
+### Test affected project
+```nx affected:test```
+```nx affected:test --only-failed```

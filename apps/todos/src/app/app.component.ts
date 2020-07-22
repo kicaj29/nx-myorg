@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Todo } from '@nx-myorg/data';
@@ -10,6 +10,8 @@ import { Todo } from '@nx-myorg/data';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  title = "Welcome to todos!";
+
   todos: Todo[] = [];
 
   constructor(private http: HttpClient){

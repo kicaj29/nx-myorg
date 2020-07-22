@@ -69,7 +69,7 @@ This operation upgraded libs from version 9 to version 10.
 ```nx g @nrwl/workspace:lib data```   
 If you're using VS Code it may be necessary at this point to restart the TS server so that the new @myorg/data package is recognized. This may need to be done every time a new workspace library is added.   
 
-### Create a library of Angular components.
+### Create a angular library
 
 * Create a library ```nx g @nrwl/angular:lib ui```
 * Add a component to the library ```nx g component todos --project=ui --export```

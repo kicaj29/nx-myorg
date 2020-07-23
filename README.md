@@ -115,3 +115,8 @@ nx run-many --target=build --projects="todos,api"
 
 #### Run story book for selected project
 ```nx run ui:storybook```
+
+#### Run Cypress Tests Against a Storybook Instance
+```nx run ui-e2e:e2e```
+
+It will run [todos.component.spec.ts](apps\ui-e2e\src\integration\todos\todos) from **ui-e2e** project (these are not unit test!).

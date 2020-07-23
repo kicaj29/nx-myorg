@@ -95,3 +95,8 @@ nx run-many --target=build --projects="todos,api"
 
 ### Running tasks for multiple projects in parallel
 ```nx run-many --target=build --all --parallel --maxParallel=8```
+
+### Story book
+
+#### Add the story book plugin
+```npm install --save-dev @nrwl/storybook```

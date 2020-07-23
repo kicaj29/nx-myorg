@@ -92,3 +92,6 @@ nx run-many --target=build --projects="todos,api"
 ### Test affected project (unit tests)
 ```nx affected:test```
 ```nx affected:test --only-failed```
+
+### Running tasks for multiple projects in parallel
+```nx run-many --target=build --all --parallel --maxParallel=8```

@@ -130,6 +130,13 @@ Using ```nx g @nrwl/angular:storybook-configuration ui``` fails with error ```Pa
 
 This job has to be done manually: easiest way is to copy existing *.stories.ts and update it.
 
+#### Creating a e2e test for newly created story for newly added component
+
+It looks that there is no command that will create a e2e test for story for newly added component.
+Using ```nx g @nrwl/angular:storybook-configuration ui``` fails with error ```Path "/apps/ui-e2e/tslint.json" already exist.```.
+
+This job has to be done manually: easiest way is to copy existing *.spec.ts and update it.
+
 # Links
 https://blog.nrwl.io/storybook-support-run-many-command-ui-improvements-and-more-in-nx-8-8-90575cb5dda4   
 

@@ -123,6 +123,12 @@ It will run [todos.component.spec.ts](apps\ui-e2e\src\integration\todos\todos) f
 
 To debug run ```nx run ui-e2e:e2e --watch```
 
+#### Creating a story in storybook for newly added component
+
+It looks that there is no command that will create a story for newly added component.
+Using ```nx g @nrwl/angular:storybook-configuration ui``` fails with error ```Path "/apps/ui-e2e/tslint.json" already exist.```.   
+
+This job has to be done manually: easiest way is to copy existing *.stories.ts and update it.
 
 # Links
 https://blog.nrwl.io/storybook-support-run-many-command-ui-improvements-and-more-in-nx-8-8-90575cb5dda4   

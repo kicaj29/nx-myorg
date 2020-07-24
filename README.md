@@ -125,6 +125,10 @@ To debug run ```nx run ui-e2e:e2e --watch```
 
 #### Creating a story in storybook for newly added component including e2e test for the storybook
 
+First generate new component:
+```nx g component slider --project=ui --export```
+
+Next create a story for the newly created component:
 ```nx g @nrwl/angular:storybook-configuration --name=ui --generateStories```
 
 ```

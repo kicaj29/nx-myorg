@@ -122,3 +122,9 @@ nx run-many --target=build --projects="todos,api"
 It will run [todos.component.spec.ts](apps\ui-e2e\src\integration\todos\todos) from **ui-e2e** project (these are not unit test!).   
 
 To debug run ```nx run ui-e2e:e2e --watch```
+
+
+# Links
+https://blog.nrwl.io/storybook-support-run-many-command-ui-improvements-and-more-in-nx-8-8-90575cb5dda4   
+
+[How to combine in one story book components from different angular libs](https://www.youtube.com/watch?v=c323HOuFKkA).

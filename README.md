@@ -1,3 +1,29 @@
+- [nx](#nx)
+  - [Problem 1](#problem-1)
+  - [Problem 2](#problem-2)
+  - [Selected commands](#selected-commands)
+    - [Create workspace](#create-workspace)
+    - [Install nest](#install-nest)
+    - [Add nest project and link it with frontend project](#add-nest-project-and-link-it-with-frontend-project)
+    - [Serve app](#serve-app)
+    - [Run e2e tests](#run-e2e-tests)
+    - [Create library](#create-library)
+    - [Create a angular library](#create-a-angular-library)
+    - [Dependency graph](#dependency-graph)
+    - [Building Multiple Projects](#building-multiple-projects)
+    - [Lint with dependencies](#lint-with-dependencies)
+    - [Detect affected projects](#detect-affected-projects)
+    - [Test affected project (unit tests)](#test-affected-project-unit-tests)
+    - [Running tasks for multiple projects in parallel](#running-tasks-for-multiple-projects-in-parallel)
+    - [Story book](#story-book)
+      - [Add the story book plugin](#add-the-story-book-plugin)
+      - [Create story book configuration](#create-story-book-configuration)
+      - [Run story book for selected project](#run-story-book-for-selected-project)
+      - [Run Cypress Tests Against a Storybook Instance](#run-cypress-tests-against-a-storybook-instance)
+      - [Creating a story in storybook for newly added component including e2e test for the storybook](#creating-a-story-in-storybook-for-newly-added-component-including-e2e-test-for-the-storybook)
+- [Links](#links)
+
+
 # nx
 nx examples
 based on https://nx.dev/angular/tutorial/01-create-application
@@ -105,6 +131,9 @@ nx run-many --target=build --projects="todos,api"
 ```npm install --save-dev @nrwl/storybook```
 
 #### Create story book configuration
+
+The following command will create new story book and stories for existing components plus e2e tests for this story book.
+
 ```nx g @nrwl/angular:storybook-configuration ui```
 ```
 ? Configure a cypress e2e app to run against the storybook instance? Yes
